@@ -3,9 +3,12 @@ import github from "../assets/github.svg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { logInUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { logInUser, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,30 +21,31 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         e.target.reset();
-        console.log("Logged In Successfully!");
+        toast.success("Logged In Successfully!");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
-        console.log("Email or Password Doesn't Match");
+        toast.error("Email or Password Doesn't Match");
       });
   };
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result => {
+      .then((result) => {
         console.log(result.user);
-        console.log("Logged In Successfully");
-    })
-    .catch(error => {
+        toast.success("Logged In Successfully!");
+      })
+      .catch((error) => {
         console.error(error);
-    })
+      });
   };
 
   const handleGithubSignIn = () => {
     signInWithGithub()
       .then((result) => {
         console.log(result.user);
-        console.log("Logged In Successfully!");
+        toast.success("Logged In Successfully!");
       })
       .catch((error) => {
         console.error(error);
@@ -109,6 +113,19 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -14,6 +16,18 @@ const Register = () => {
     const password = e.target.password.value;
     console.log(name, email, password);
 
+    // password validation
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must have an Uppercase Letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password must have a Lowercase Letter");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -25,11 +39,13 @@ const Register = () => {
         })
           .then(() => {
             console.log("Profile updated");
+            toast.success("Registration Successful!");
           })
           .catch();
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Email Already in Use");
       });
   };
 
@@ -101,6 +117,19 @@ const Register = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
     </div>
   );
 };
