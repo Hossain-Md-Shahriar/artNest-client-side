@@ -14,6 +14,8 @@ export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
 
+const githubProvider = new GithubAuthProvider();
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,6 +34,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+
+  const signInWithGithub = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  }
 
   const logOut = () => {
     setLoading(true);
@@ -60,6 +67,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     logInUser,
     signInWithGoogle,
+    signInWithGithub,
     logOut,
   };
   return (

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { logInUser, signInWithGoogle } = useContext(AuthContext);
+  const { logInUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -37,7 +37,16 @@ const Login = () => {
     })
   };
 
-  const handleGithubSignIn = () => {};
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        console.log(result.user);
+        console.log("Logged In Successfully!");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="mt-28">
