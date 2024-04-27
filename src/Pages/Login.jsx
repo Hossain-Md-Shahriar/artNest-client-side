@@ -1,30 +1,40 @@
 import google from "../assets/google.svg";
 import github from "../assets/github.svg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+  const { logInUser } = useContext(AuthContext);
 
-    const handleLogin = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
 
-    const handleGoogleSignIn = () => {
+    logInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        e.target.reset();
+        console.log("Logged In Successfully!");
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log("Email or Password Doesn't Match");
+      });
+  };
 
-    }
+  const handleGoogleSignIn = () => {};
 
-    const handleGithubSignIn = () => {
-
-    }
+  const handleGithubSignIn = () => {};
 
   return (
     <div className="mt-28">
-        <h2 className="text-2xl font-medium mb-6 text-center">
-          Login to Your Account
-        </h2>
+      <h2 className="text-2xl font-medium mb-6 text-center">
+        Login to Your Account
+      </h2>
       <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#3282b857]">
         <form onSubmit={handleLogin}>
           <div className="form-control mb-2">
@@ -82,7 +92,7 @@ const Login = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
