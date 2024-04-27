@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, signInWithGoogle } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,7 +26,16 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then(result => {
+        console.log(result.user);
+        console.log("Logged In Successfully");
+    })
+    .catch(error => {
+        console.error(error);
+    })
+  };
 
   const handleGithubSignIn = () => {};
 
