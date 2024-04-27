@@ -49,6 +49,24 @@ const Navbar = () => {
           All Items
         </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/addItem"
+              className={({ isActive }) =>
+                `hover:underline underline-offset-2 ${
+                  isActive
+                    ? "font-semibold text-blue-500"
+                    : "font-normal dark:text-white"
+                }`
+              }
+            >
+              Add Craft Item
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -98,10 +116,7 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            <button
-              onClick={handleLogOut}
-              className="btn bg-blue-400"
-            >
+            <button onClick={handleLogOut} className="btn bg-blue-400">
               Sign out
             </button>
           </div>

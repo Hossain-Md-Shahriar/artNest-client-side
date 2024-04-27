@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import AllItems from "../Pages/AllItems";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AddItem from "../Pages/AddItem";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,16 +17,20 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/allItems",
-        element: <AllItems />,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/allItems",
+        element: <AllItems />,
+      },
+      {
+        path: "/addItem",
+        element: <PrivateRoute><AddItem /></PrivateRoute>,
       },
     ],
   },

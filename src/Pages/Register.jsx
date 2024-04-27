@@ -50,86 +50,88 @@ const Register = () => {
   };
 
   return (
-    <div className="mt-28">
-      <h2 className="text-2xl font-medium mb-8 text-center">
-        Register Your Account
-      </h2>
-      <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#3282b857]">
-        <form onSubmit={handleRegister}>
-          <div className="form-control mb-2">
-            <label className="label">
-              <span className="">Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="name"
-              name="name"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control mb-2">
-            <label className="label">
-              <span className="">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="email"
-              name="email"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control mb-2">
-            <label className="label">
-              <span className="">Photo URL</span>
-            </label>
-            <input
-              type="url"
-              placeholder="photo url"
-              name="photo"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="password"
-              name="password"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control mt-7">
-            <button className="btn btn-neutral bg-[#0F4C75] hover:bg-[#0a3049] text-white">
-              Register
-            </button>
-          </div>
-        </form>
-        <p className="text-center mt-5">
-          Already have an account?{" "}
-          <Link to="/login" className="text-[#3282B8] font-semibold">
-            Login
-          </Link>
-        </p>
+    <div className="max-w-6xl mx-auto mt-28">
+      <div className="mx-4">
+        <h2 className="text-2xl font-medium mb-8 text-center">
+          Register Your Account
+        </h2>
+        <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#3282b857]">
+          <form onSubmit={handleRegister}>
+            <div className="form-control mb-2">
+              <label className="label">
+                <span className="">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control mb-2">
+              <label className="label">
+                <span className="">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="email"
+                name="email"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control mb-2">
+              <label className="label">
+                <span className="">Photo URL</span>
+              </label>
+              <input
+                type="url"
+                placeholder="photo url"
+                name="photo"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control mt-7">
+              <button className="btn btn-neutral bg-[#0F4C75] hover:bg-[#0a3049] text-white">
+                Register
+              </button>
+            </div>
+          </form>
+          <p className="text-center mt-5">
+            Already have an account?{" "}
+            <Link to="/login" className="text-[#3282B8] font-semibold">
+              Login
+            </Link>
+          </p>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Slide}
+        />
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Slide}
-      />
     </div>
   );
 };
