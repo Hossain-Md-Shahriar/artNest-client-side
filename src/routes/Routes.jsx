@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AddItem from "../Pages/AddItem";
 import PrivateRoute from "./PrivateRoute";
+import { baseURL } from "../utility/base_url";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,15 @@ const router = createBrowserRouter([
       {
         path: "/allItems",
         element: <AllItems />,
+        loader: () => fetch(`${baseURL}/crafts`),
       },
       {
         path: "/addItem",
-        element: <PrivateRoute><AddItem /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddItem />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { baseURL } from "../utility/base_url";
+
 const AddItem = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddItem = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -29,6 +36,27 @@ const AddItem = () => {
     };
 
     console.log(craftItem);
+
+    fetch(`${baseURL}/crafts`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(craftItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Craft Item Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -94,12 +122,14 @@ const AddItem = () => {
             type="email"
             name="email"
             placeholder="email"
+            defaultValue={user.email}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="name"
             placeholder="username"
+            defaultValue={user.displayName}
           />
           <input className="btn" type="submit" value="Add Craft Item" />
         </form>
