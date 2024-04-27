@@ -7,6 +7,7 @@ import Register from "../Pages/Register";
 import AddItem from "../Pages/AddItem";
 import PrivateRoute from "./PrivateRoute";
 import { baseURL } from "../utility/base_url";
+import ItemDetails from "../Pages/ItemDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         path: "/allItems",
         element: <AllItems />,
         loader: () => fetch(`${baseURL}/crafts`),
+      },
+      {
+        path: "/craftItems/:id",
+        element: <PrivateRoute><ItemDetails /></PrivateRoute>,
+        loader: ({params}) => fetch(`${baseURL}/crafts/${params.id}`),
       },
       {
         path: "/addItem",
