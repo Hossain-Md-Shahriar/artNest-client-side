@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [dark, setDark] = useState(false);
@@ -37,7 +37,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gray-200 dark:bg-black">
+    <div className="navbar bg-gray-200 dark:bg-black fixed top-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -63,13 +63,14 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="text-xl font-bold dark:text-white">daisyUI</a>
+        <Link to="/" className="text-xl font-bold dark:text-white">daisyUI</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-4">{navlinks}</ul>
       </div>
       <div className="navbar-end space-x-2">
-        <a className="btn">Button</a>
+        <NavLink className={({isActive}) => `btn ${isActive ? "bg-blue-400" : "bg-white"}`} to="/login">Login</NavLink>
+        <NavLink className={({isActive}) => `btn ${isActive ? "bg-blue-400" : "bg-white"}`} to="/register">Register</NavLink>
         <button onClick={darkModeHandler} className="text-2xl dark:text-white">
           {dark ? <IoSunny /> : <IoMoon />}
         </button>

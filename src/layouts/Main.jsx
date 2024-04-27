@@ -5,7 +5,12 @@ const Main = () => {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="mt-16"></div>
+      <div className="max-w-6xl mx-auto">
+        <div className="mx-4">
+        <Outlet />
+        </div>
+      </div>
     </div>
   );
 };
