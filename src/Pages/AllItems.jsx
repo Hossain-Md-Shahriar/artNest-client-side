@@ -9,7 +9,7 @@ const AllItems = () => {
         <table className="table">
           <thead>
             <tr>
-              <th>Item Name</th>
+              <th>Image</th>
               <th>Subcategory</th>
               <th>Added By</th>
               <th>Action</th>
@@ -19,7 +19,7 @@ const AllItems = () => {
             {
               crafts.map(craft => (
                 <tr key={craft._id}>
-                  <td>{craft.item_name}</td>
+                  <td>{craft.image}</td>
                   <td>{craft.subcategory_name}</td>
                   <td>{craft.name}</td>
                   <td><Link to={`/craftItems/${craft._id}`} className="btn btn-primary">View Details</Link></td>

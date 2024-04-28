@@ -1,12 +1,23 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
-import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
+import Swal from "sweetalert2";
 
-const AddItem = () => {
-  const { user } = useContext(AuthContext);
+const UpdateItem = () => {
+  const craft = useLoaderData();
+  const {
+    _id,
+    image,
+    item_name,
+    subcategory_name,
+    description,
+    price,
+    rating,
+    customization,
+    processingTime,
+    stockStatus,
+  } = craft;
 
-  const handleAddItem = (e) => {
+  const handleUpdateItem = (e) => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.value;
@@ -18,10 +29,8 @@ const AddItem = () => {
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
     const stockStatus = form.stockStatus.value;
-    const email = form.email.value;
-    const name = form.name.value;
 
-    const craftItem = {
+    const updatedCraft = {
       image,
       item_name,
       subcategory_name,
@@ -31,111 +40,102 @@ const AddItem = () => {
       customization,
       processingTime,
       stockStatus,
-      email,
-      name,
     };
 
-    console.log(craftItem);
+    console.log(updatedCraft);
 
-    fetch(`${baseURL}/crafts`, {
-      method: "POST",
+    fetch(`${baseURL}/crafts/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(craftItem),
+      body: JSON.stringify(updatedCraft),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Craft Item Added",
+            text: "Craft Updated successfully",
             icon: "success",
             confirmButtonText: "Ok",
           });
-          e.target.reset();
         }
       });
   };
-
   return (
     <div className="max-w-6xl mx-auto mt-28">
       <div className="mx-4">
-        <form onSubmit={handleAddItem} className="flex flex-wrap gap-4">
+        <form onSubmit={handleUpdateItem} className="flex flex-wrap gap-4">
           <input
             className="border-2 p-2"
             type="text"
             name="image"
             placeholder="image"
+            defaultValue={image}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="item_name"
             placeholder="item name"
+            defaultValue={item_name}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="subcategory_name"
             placeholder="subcategory"
+            defaultValue={subcategory_name}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="description"
             placeholder="description"
+            defaultValue={description}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="price"
             placeholder="price"
+            defaultValue={price}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="rating"
             placeholder="rating"
+            defaultValue={rating}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="customization"
             placeholder="customization"
+            defaultValue={customization}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="processingTime"
             placeholder="processing time"
+            defaultValue={processingTime}
           />
           <input
             className="border-2 p-2"
             type="text"
             name="stockStatus"
             placeholder="stock status"
+            defaultValue={stockStatus}
           />
-          <input
-            className="border-2 p-2"
-            type="email"
-            name="email"
-            placeholder="email"
-            defaultValue={user.email}
-          />
-          <input
-            className="border-2 p-2"
-            type="text"
-            name="name"
-            placeholder="username"
-            defaultValue={user.displayName}
-          />
-          <input className="btn" type="submit" value="Add Craft Item" />
+          <input className="btn" type="submit" value="Update Craft Item" />
         </form>
       </div>
     </div>
   );
 };
 
-export default AddItem;
+export default UpdateItem;

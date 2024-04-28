@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import { baseURL } from "../utility/base_url";
 import ItemDetails from "../Pages/ItemDetails";
 import MyList from "../Pages/MyList";
+import UpdateItem from "../Pages/UpdateItem";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/craftItems/:id",
-        element: <PrivateRoute><ItemDetails /></PrivateRoute>,
-        loader: ({params}) => fetch(`${baseURL}/crafts/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <ItemDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
       },
       {
         path: "/addItem",
@@ -53,6 +58,15 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch(`${baseURL}/crafts`),
+      },
+      {
+        path: "/updateItem/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateItem />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
       },
     ],
   },

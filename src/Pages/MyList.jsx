@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const MyList = () => {
@@ -16,7 +16,7 @@ const MyList = () => {
                 crafts.map(craft => (
                     <div key={craft._id} className="border-2 p-5">
                         <h3 className="text-2xl mb-4">Item Name: {craft.image}</h3>
-                        <button className="btn btn-success mr-4">Update</button>
+                        <Link to={`/updateItem/${craft._id}`} className="btn btn-success mr-4">Update</Link>
                         <button className="btn btn-error">Delete</button>
                     </div>
                 ))
