@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { baseURL } from "../utility/base_url";
 
 const AddItem = () => {
   const { user } = useContext(AuthContext);
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -75,12 +76,19 @@ const AddItem = () => {
             name="item_name"
             placeholder="item name"
           />
-          <input
-            className="border-2 p-2"
-            type="text"
+          <select
             name="subcategory_name"
-            placeholder="subcategory"
-          />
+            value={selectedSubcategory}
+            onChange={(e) => setSelectedSubcategory(e.target.value)}
+            className="p-2 border-2"
+          >
+            <option value="Landscape Painting">Landscape Painting</option>
+            <option value="Portrait Drawing">Portrait Drawing</option>
+            <option value="Watercolour Painting">Watercolour Painting</option>
+            <option value="Oil Painting">Oil Painting</option>
+            <option value="Charcoal Sketching">Charcoal Sketching</option>
+            <option value="Cartoon Drawing">Cartoon Drawing</option>
+          </select>
           <input
             className="border-2 p-2"
             type="text"

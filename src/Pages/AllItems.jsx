@@ -16,16 +16,21 @@ const AllItems = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              crafts.map(craft => (
-                <tr key={craft._id}>
-                  <td>{craft.image}</td>
-                  <td>{craft.subcategory_name}</td>
-                  <td>{craft.name}</td>
-                  <td><Link to={`/craftItems/${craft._id}`} className="btn btn-primary">View Details</Link></td>
-                </tr>
-              ))
-            }
+            {crafts.map((craft) => (
+              <tr key={craft._id}>
+                <td>{craft.image}</td>
+                <td>{craft.subcategory_name}</td>
+                <td>{craft.name}</td>
+                <td>
+                  <Link
+                    to={`/craftItems/${craft._id}`}
+                    className="btn btn-primary"
+                  >
+                    View Details
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

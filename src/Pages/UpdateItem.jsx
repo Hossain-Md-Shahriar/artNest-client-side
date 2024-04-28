@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const UpdateItem = () => {
   const craft = useLoaderData();
@@ -16,6 +17,7 @@ const UpdateItem = () => {
     processingTime,
     stockStatus,
   } = craft;
+  const [selectedSubcategory, setSelectedSubcategory] = useState(subcategory_name);
 
   const handleUpdateItem = (e) => {
     e.preventDefault();
@@ -82,13 +84,19 @@ const UpdateItem = () => {
             placeholder="item name"
             defaultValue={item_name}
           />
-          <input
-            className="border-2 p-2"
-            type="text"
+          <select
             name="subcategory_name"
-            placeholder="subcategory"
-            defaultValue={subcategory_name}
-          />
+            value={selectedSubcategory}
+            onChange={(e) => setSelectedSubcategory(e.target.value)}
+            className="p-2 border-2"
+          >
+            <option value="Landscape Painting">Landscape Painting</option>
+            <option value="Portrait Drawing">Portrait Drawing</option>
+            <option value="Watercolour Painting">Watercolour Painting</option>
+            <option value="Oil Painting">Oil Painting</option>
+            <option value="Charcoal Sketching">Charcoal Sketching</option>
+            <option value="Cartoon Drawing">Cartoon Drawing</option>
+          </select>
           <input
             className="border-2 p-2"
             type="text"
