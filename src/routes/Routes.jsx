@@ -10,15 +10,24 @@ import { baseURL } from "../utility/base_url";
 import ItemDetails from "../Pages/ItemDetails";
 import MyList from "../Pages/MyList";
 import UpdateItem from "../Pages/UpdateItem";
+import MatchedCategory from "../Pages/MatchedCategory";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch(`${baseURL}/craftCategories`),
+      },
+      {
+        path: "/matchedCategory/:id",
+        element: <MatchedCategory />,
+        loader: ({params}) => fetch(`${baseURL}/craftCategories/${params.id}`),
       },
       {
         path: "/login",
