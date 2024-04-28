@@ -9,6 +9,7 @@ const MyList = () => {
   const loadedCrafts = useLoaderData();
   const myCrafts = loadedCrafts.filter((craft) => craft?.email === user?.email);
   const [crafts, setCrafts] = useState(myCrafts);
+  const [selectedValue, setSelectedValue] = useState("");
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -34,7 +35,7 @@ const MyList = () => {
                 text: "Your Coffee has been deleted.",
                 icon: "success",
               });
-              const remaining = crafts.filter(craft => craft._id !== _id);
+              const remaining = crafts.filter((craft) => craft._id !== _id);
               setCrafts(remaining);
             }
           });
@@ -42,19 +43,62 @@ const MyList = () => {
     });
   };
 
+  const handleFilter = (e) => {
+    const options = e.target.value;
+    setSelectedValue(options);
+    console.log(options);
+    if (options === "all") {
+      setCrafts(myCrafts);
+    } else if (options === "yes") {
+      const yesCrafts = myCrafts.filter(
+        (craft) => craft.customization.toLowerCase() === "yes"
+      );
+      setCrafts(yesCrafts);
+    } else {
+      const noCrafts = myCrafts.filter(
+        (craft) => craft.customization.toLowerCase() === "no"
+      );
+      setCrafts(noCrafts);
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto py-28">
-      <div className="mx-4">
+      <div className="mx-4 flex flex-col items-center gap-8">
+        <div>
+          <label className="mr-2">Filter by Customization: </label>
+          <select
+            value={selectedValue}
+            onChange={handleFilter}
+            className="p-3 border-2"
+          >
+            <option value="all">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
         <div className="grid grid-cols-2 gap-5">
-            {
-                crafts.map(craft => (
-                    <div key={craft._id} className="border-2 p-5">
-                        <h3 className="text-2xl mb-4">Item Name: {craft.image}</h3>
-                        <Link to={`/updateItem/${craft._id}`} className="btn btn-success mr-4">Update</Link>
-                        <button onClick={() => handleDelete(craft._id)} className="btn btn-error">Delete</button>
-                    </div>
-                ))
-            }
+          {crafts.map((craft) => (
+            <div key={craft._id} className="border-2 p-5">
+              <h3 className="text-2xl mb-4">Item Name: {craft.image}</h3>
+              <h3 className="text-2xl mb-4">
+                Customization: {craft.customization}
+              </h3>
+              <Link
+                to={`/updateItem/${craft._id}`}
+                className="btn btn-success mr-4"
+              >
+                Update
+              </Link>
+              <button
+                onClick={() => handleDelete(craft._id)}
+                className="btn btn-error"
+              >
+                Delete
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>
