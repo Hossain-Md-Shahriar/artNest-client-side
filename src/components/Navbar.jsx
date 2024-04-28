@@ -65,6 +65,20 @@ const Navbar = () => {
               Add Craft Item
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/myList"
+              className={({ isActive }) =>
+                `hover:underline underline-offset-2 ${
+                  isActive
+                    ? "font-semibold text-blue-500"
+                    : "font-normal dark:text-white"
+                }`
+              }
+            >
+              My Arts & Craft List
+            </NavLink>
+          </li>
         </>
       )}
     </>

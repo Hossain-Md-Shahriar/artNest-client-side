@@ -8,6 +8,7 @@ import AddItem from "../Pages/AddItem";
 import PrivateRoute from "./PrivateRoute";
 import { baseURL } from "../utility/base_url";
 import ItemDetails from "../Pages/ItemDetails";
+import MyList from "../Pages/MyList";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,15 @@ const router = createBrowserRouter([
             <AddItem />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/myList",
+        element: (
+          <PrivateRoute>
+            <MyList />
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`${baseURL}/crafts`),
       },
     ],
   },
