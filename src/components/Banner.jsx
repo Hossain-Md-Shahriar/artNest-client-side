@@ -4,9 +4,6 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
-import slide1 from "../assets/Slide1.png";
-import slide2 from "../assets/Slide2.jpg";
-import slide3 from "../assets/Slide3.png";
 import { Fade } from "react-awesome-reveal";
 
 const Banner = () => {
@@ -29,7 +26,7 @@ const Banner = () => {
         className="h-full"
       >
         <SwiperSlide>
-          <div className="h-full bg-slide2 bg-no-repeat bg-center bg-cover">
+          <div className="h-full bg-[url(https://i.ibb.co/ZKDxVLZ/Slide2.jpg)] bg-no-repeat bg-center bg-cover">
             <div className="size-full bg-gradient-to-r from-[#000000cb] via-[#fff0] via-60% to-[#fff0] p-14 lg:p-20 flex items-center">
               <div className="px-9 py-10 rounded-2xl max-w-[500px]">
                 <Fade
@@ -56,7 +53,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-full bg-slide1 bg-no-repeat bg-center bg-cover">
+          <div className="h-full bg-[url(https://i.ibb.co/cJkvVMQ/Slide1.png)] bg-no-repeat bg-center bg-cover">
             <div className="size-full bg-gradient-to-r from-[#000000cb] via-[#fff0] via-60% to-[#fff0] p-14 lg:p-20 flex items-center">
               <div className="px-9 py-10 rounded-2xl max-w-[500px]">
                 <Fade
@@ -83,7 +80,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-full bg-slide3 bg-no-repeat bg-center bg-cover">
+          <div className="h-full bg-[url(https://i.ibb.co/1R2ppVJ/Slide3.png)] bg-no-repeat bg-center bg-cover">
             <div className="size-full bg-gradient-to-r from-[#000000cb] via-[#fff0] via-60% to-[#fff0] p-14 lg:p-20 flex items-center">
               <div className="px-9 py-10 rounded-2xl max-w-[500px]">
                 <Fade
