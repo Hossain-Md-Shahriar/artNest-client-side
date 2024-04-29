@@ -3,6 +3,8 @@ import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { Tooltip } from "react-tooltip";
+import { IoIosMenu } from "react-icons/io";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -21,29 +23,29 @@ const Navbar = () => {
 
   const navlinks = (
     <>
-      <li className="border-b-2 p-2 lg:border-b-0 lg:p-0">
+      <li className="border-b p-2 lg:border-b-0 lg:p-0 dark:border-[#4c4c4c]">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `hover:underline underline-offset-2 ${
+            `${
               isActive
-                ? "font-semibold text-blue-500"
+                ? "border-b-2 font-medium text-[#4793AF]"
                 : "font-normal dark:text-white"
-            }`
+            } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
           }
         >
           Home
         </NavLink>
       </li>
-      <li>
+      <li className="border-b p-2 lg:border-b-0 lg:p-0 dark:border-[#4c4c4c]">
         <NavLink
           to="/allItems"
           className={({ isActive }) =>
-            `hover:underline underline-offset-2 ${
+            `${
               isActive
-                ? "font-semibold text-blue-500"
+                ? "border-b-2 font-medium text-[#4793AF]"
                 : "font-normal dark:text-white"
-            }`
+            } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
           }
         >
           All Items
@@ -51,15 +53,15 @@ const Navbar = () => {
       </li>
       {user && (
         <>
-          <li>
+          <li className="border-b p-2 lg:border-b-0 lg:p-0 dark:border-[#4c4c4c]">
             <NavLink
               to="/addItem"
               className={({ isActive }) =>
-                `hover:underline underline-offset-2 ${
+                `${
                   isActive
-                    ? "font-semibold text-blue-500"
+                    ? "border-b-2 font-medium text-[#4793AF]"
                     : "font-normal dark:text-white"
-                }`
+                } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
               }
             >
               Add Craft Item
@@ -69,11 +71,11 @@ const Navbar = () => {
             <NavLink
               to="/myList"
               className={({ isActive }) =>
-                `hover:underline underline-offset-2 ${
+                `${
                   isActive
-                    ? "font-semibold text-blue-500"
+                    ? "border-b-2 font-medium text-[#4793AF]"
                     : "font-normal dark:text-white"
-                }`
+                } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
               }
             >
               My Arts & Craft List
@@ -85,28 +87,15 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gray-200 dark:bg-black fixed top-0 z-50">
+    <div className="navbar bg-white dark:bg-[#282828] drop-shadow-lg fixed top-0 z-50 px-3 md:px-8 py-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+            <IoIosMenu className="text-2xl dark:text-white" />
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content space-y-2 lg:space-y-0 mt-3 z-[1] p-5 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content space-y-2 lg:space-y-0 mt-3 z-[1] p-5 shadow bg-base-100 rounded-box w-52 dark:bg-[#1f1f1f]"
           >
             {navlinks}
           </ul>
@@ -121,24 +110,42 @@ const Navbar = () => {
       <div className="navbar-end space-x-2">
         {user ? (
           <div className="flex gap-3 items-center">
-            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-              <div className="size-12 rounded-full overflow-hidden border border-[#989898]">
-                <img
-                  className="size-full object-cover object-center"
-                  src={user.photoURL}
-                  alt=""
-                />
-              </div>
+            <div
+              className="size-12 rounded-full overflow-hidden"
+              id="clickable"
+            >
+              <img
+                className="size-full object-cover object-center"
+                src={user.photoURL}
+                alt=""
+              />
             </div>
-            <button onClick={handleLogOut} className="btn bg-blue-400">
-              Sign out
-            </button>
+            <Tooltip
+              anchorSelect="#clickable"
+              clickable
+              style={{
+                borderRadius: "8px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <p className="font-medium text-lg">{user.displayName}</p>
+              <button
+                onClick={handleLogOut}
+                className="btn mb-2 bg-[#4793AF] text-white border-none text-base hover:bg-[#32697c]"
+              >
+                Sign out
+              </button>
+            </Tooltip>
           </div>
         ) : (
           <>
             <NavLink
               className={({ isActive }) =>
-                `btn ${isActive ? "bg-blue-400" : "bg-white"}`
+                `btn text-base border-none shadow-md hover:bg-[#215a6e] text-white ${
+                  isActive ? "bg-[#215a6e]" : "bg-[#4793AF]"
+                }`
               }
               to="/login"
             >
@@ -146,7 +153,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `btn ${isActive ? "bg-blue-400" : "bg-white"}`
+                `btn text-base border-none shadow-md hover:bg-[#215a6e] text-white ${
+                  isActive ? "bg-[#215a6e]" : "bg-[#4793AF]"
+                }`
               }
               to="/register"
             >

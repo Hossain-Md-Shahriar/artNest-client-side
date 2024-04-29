@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
+import { Fade } from "react-awesome-reveal";
+import Banner from "../components/Banner";
 
 const Home = () => {
   // const craftCategories = useLoaderData();
@@ -26,12 +28,9 @@ const Home = () => {
 
   return (
     <div className="dark:bg-blue-500">
-      <h3 className="text-2xl">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.sequuntur nobis
-        molestiae, ullam recusandae!
-      </h3>
+      <Banner />
       <div className="mt-28">
-        <h2 className="text-3xl">arts & crafts categories</h2>
+        <h2 className="text-3xl font-semibold">arts & crafts categories</h2>
         <div className="grid grid-cols-3 gap-4">
           {craftCategories.map((c) => (
             <Link
