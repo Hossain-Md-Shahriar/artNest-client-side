@@ -3,9 +3,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
 import { Fade } from "react-awesome-reveal";
 import Banner from "../components/Banner";
+import HomeCraftItem from "../components/HomeCraftItem";
 
 const Home = () => {
-  // const craftCategories = useLoaderData();
+  // const loadedCrafts = useLoaderData();
   const [loading, setLoading] = useState(true);
   const [craftCategories, setCraftCategories] = useState([]);
 
@@ -27,8 +28,14 @@ const Home = () => {
   }
 
   return (
-    <div className="dark:bg-blue-500">
+    <div className="dark:bg-[#101010]">
       <Banner />
+      {/* Craft Items section */}
+      <div className="max-w-6xl mx-auto my-24 lg:my-32">
+        <div className="mx-4">
+          <HomeCraftItem />
+        </div>
+      </div>
       <div className="mt-28">
         <h2 className="text-3xl font-semibold">arts & crafts categories</h2>
         <div className="grid grid-cols-3 gap-4">

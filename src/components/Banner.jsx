@@ -15,10 +15,10 @@ const Banner = () => {
         navigation={true}
         loop={true}
         // centeredSlides={true}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -64,7 +64,7 @@ const Banner = () => {
                   delay={200}
                 >
                   <h2 className="text-white text-4xl font-bold drop-shadow-lg">
-                    Paintings That Calm Your Soul
+                    Paintings That Calm Your
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
                   <p className="text-white mt-5 drop-shadow-lg hidden md:block">
