@@ -28,7 +28,7 @@ const Home = () => {
   }
 
   return (
-    <div className="dark:bg-[#101010]">
+    <div className="">
       <Banner />
       {/* Craft Items section */}
       <div className="max-w-6xl mx-auto my-24 lg:my-32">
