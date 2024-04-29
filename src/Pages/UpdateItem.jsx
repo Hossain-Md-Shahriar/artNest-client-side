@@ -1,10 +1,24 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const UpdateItem = () => {
-  const craft = useLoaderData();
+  // const craft = useLoaderData();
+
+  const [loading, setLoading] = useState(true);
+  const [craft, setCraft] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`${baseURL}/crafts/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        setCraft(data);
+      });
+  }, []);
+
   const {
     _id,
     image,
@@ -18,6 +32,14 @@ const UpdateItem = () => {
     stockStatus,
   } = craft;
   const [selectedSubcategory, setSelectedSubcategory] = useState(subcategory_name);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   const handleUpdateItem = (e) => {
     e.preventDefault();

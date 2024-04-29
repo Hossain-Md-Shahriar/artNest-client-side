@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -7,9 +7,30 @@ import { baseURL } from "../utility/base_url";
 const MyList = () => {
   const { user } = useContext(AuthContext);
   const loadedCrafts = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  // const [loadedCrafts, setLoadedCrafts] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("");
+
+  // useEffect(() => {
+  //   fetch(`${baseURL}/crafts`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoading(false);
+  //       setLoadedCrafts(data);
+  //     });
+  // }, []);
+
   const myCrafts = loadedCrafts.filter((craft) => craft?.email === user?.email);
   const [crafts, setCrafts] = useState(myCrafts);
-  const [selectedValue, setSelectedValue] = useState("");
+  console.log(myCrafts);
+
+  // if (loading) {
+  //   return (
+  //     <div className="h-screen flex items-center justify-center">
+  //       <span className="loading loading-spinner loading-lg"></span>
+  //     </div>
+  //   );
+  // }
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -32,7 +53,7 @@ const MyList = () => {
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your Coffee has been deleted.",
+                text: "Craft Item has been deleted.",
                 icon: "success",
               });
               const remaining = crafts.filter((craft) => craft._id !== _id);

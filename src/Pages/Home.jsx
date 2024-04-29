@@ -1,25 +1,52 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { baseURL } from "../utility/base_url";
 
 const Home = () => {
-  const craftCategories = useLoaderData();
+  // const craftCategories = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  const [craftCategories, setCraftCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`${baseURL}/craftCategories`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        setCraftCategories(data);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div className="dark:bg-blue-500">
-      <h3 className="text-2xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit.sequuntur nobis molestiae, ullam recusandae!</h3>
+      <h3 className="text-2xl">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit.sequuntur nobis
+        molestiae, ullam recusandae!
+      </h3>
       <div className="mt-28">
         <h2 className="text-3xl">arts & crafts categories</h2>
         <div className="grid grid-cols-3 gap-4">
-          {
-            craftCategories.map(c => (
-              <Link to={`/matchedCategory/${c._id}`} key={c._id} className="border-2 p-5 cursor-pointer">
-                <h3 className="text-2xl">{c.image}</h3>
-                <h3 className="text-2xl">{c.subcategory_name}</h3>
-              </Link>
-            ))
-          }
+          {craftCategories.map((c) => (
+            <Link
+              to={`/matchedCategory/${c._id}`}
+              key={c._id}
+              className="border-2 p-5 cursor-pointer"
+            >
+              <h3 className="text-2xl">{c.image}</h3>
+              <h3 className="text-2xl">{c.subcategory_name}</h3>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(`${baseURL}/craftCategories`),
+        // loader: () => fetch(`${baseURL}/craftCategories`),
       },
       {
         path: "/matchedCategory/:id",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/allItems",
         element: <AllItems />,
-        loader: () => fetch(`${baseURL}/crafts`),
+        // loader: () => fetch(`${baseURL}/crafts`),
       },
       {
         path: "/craftItems/:id",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             <ItemDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
+        // loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
       },
       {
         path: "/addItem",
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             <UpdateItem />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
+        // loader: ({ params }) => fetch(`${baseURL}/crafts/${params.id}`),
       },
     ],
   },

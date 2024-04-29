@@ -4,6 +4,7 @@ import { baseURL } from "../utility/base_url";
 
 const MatchedCategory = () => {
   const loadedCategory = useLoaderData();
+  const [loading, setLoading] = useState(true)
   const [crafts, setCrafts] = useState([]);
   useEffect(() => {
     fetch(`${baseURL}/crafts`)
@@ -13,8 +14,17 @@ const MatchedCategory = () => {
           (item) => item.subcategory_name === loadedCategory.subcategory_name
         );
         setCrafts(filteredCrafts);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-28">
