@@ -25,35 +25,59 @@ const AllItems = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto mt-28">
+    <div className="max-w-6xl mx-auto py-20">
       <div className="mx-4">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Subcategory</th>
-              <th>Added By</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {crafts.map((craft) => (
-              <tr key={craft._id}>
-                <td>{craft.image}</td>
-                <td>{craft.subcategory_name}</td>
-                <td>{craft.name}</td>
-                <td>
-                  <Link
-                    to={`/craftItems/${craft._id}`}
-                    className="btn btn-primary"
-                  >
-                    View Details
-                  </Link>
-                </td>
+        <h1 className="text-4xl font-medium border-l-4 border-[#4793AF] mb-14 p-4 dark:text-[#f0f0f0]">
+          All Arts & Crafts Items
+        </h1>
+        <div className="overflow-x-auto">
+          <table className="w-full dark:text-[#f0f0f0]">
+            <thead>
+              <tr>
+                <th className="border-b dark:border-[#565656] p-2 text-left">
+                  Item Name
+                </th>
+                <th className="border-b dark:border-[#565656] p-2 text-left">
+                  Subcategory
+                </th>
+                <th className="border-b dark:border-[#565656] p-2 text-left">
+                  Price
+                </th>
+                <th className="border-b dark:border-[#565656] p-2 text-left">
+                  Added By
+                </th>
+                <th className="border-b dark:border-[#565656] p-2 text-right">
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {crafts.map((craft) => (
+                <tr key={craft._id}>
+                  <td className="border-b dark:border-[#565656] p-2">
+                    {craft.item_name}
+                  </td>
+                  <td className="border-b dark:border-[#565656] p-2">
+                    {craft.subcategory_name}
+                  </td>
+                  <td className="border-b dark:border-[#565656] p-2">
+                    $ {craft.price}
+                  </td>
+                  <td className="border-b dark:border-[#565656] p-2">
+                    {craft.name}
+                  </td>
+                  <td className="border-b dark:border-[#565656] py-2 text-right">
+                    <Link to={`/craftItems/${craft._id}`}>
+                      <button className="text-white font-medium py-3 px-4 bg-[#dd5846e5] rounded-sm hover:bg-[#b34739] transition-all duration-150">
+                        View Details
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
