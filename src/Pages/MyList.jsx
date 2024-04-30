@@ -3,6 +3,9 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { baseURL } from "../utility/base_url";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { PiPencilBold } from "react-icons/pi";
+import { Tooltip } from "react-tooltip";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -84,42 +87,78 @@ const MyList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-28">
-      <div className="mx-4 flex flex-col items-center gap-8">
-        <div>
-          <label className="mr-2">Filter by Customization: </label>
-          <select
-            value={selectedValue}
-            onChange={handleFilter}
-            className="p-3 border-2"
-          >
-            <option value="all">All</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-
-        <div className="grid grid-cols-2 gap-5">
-          {crafts.map((craft) => (
-            <div key={craft._id} className="border-2 p-5">
-              <h3 className="text-2xl mb-4">Item Name: {craft.image}</h3>
-              <h3 className="text-2xl mb-4">
-                Customization: {craft.customization}
-              </h3>
-              <Link
-                to={`/updateItem/${craft._id}`}
-                className="btn btn-success mr-4"
+    <div className="bg-[#ffc3700a] dark:bg-[#ffc37005]">
+      <div className="max-w-7xl mx-auto py-28">
+        <div className="mx-4">
+          <div className="flex justify-between items-end gap-4 flex-wrap mb-8">
+            <h1 className="text-4xl font-medium border-l-4 border-[#4793AF] p-4 dark:text-[#f0f0f0]">
+              My Arts & Crafts List
+            </h1>
+            <div>
+              <label className="dark:text-[#f0f0f0] mr-2">Filter by Customization: </label>
+              <select
+                value={selectedValue}
+                onChange={handleFilter}
+                className="p-2 border-2 rounded-md bg-transparent dark:text-[#f0f0f0] dark:border-[#565656]"
               >
-                Update
-              </Link>
-              <button
-                onClick={() => handleDelete(craft._id)}
-                className="btn btn-error"
-              >
-                Delete
-              </button>
+                <option className="text-black" value="all">All</option>
+                <option className="text-black" value="yes">Yes</option>
+                <option className="text-black" value="no">No</option>
+              </select>
             </div>
-          ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
+            {crafts.map((craft) => (
+              <div
+                key={craft._id}
+                className="bg-[#ffc37033] dark:bg-[#ffc37021] p-4 flex flex-col gap-5 rounded-md shadow-lg"
+              >
+                <div className="bg-[#717171] w-full h-52 rounded-sm overflow-hidden">
+                  <img
+                    className="size-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+                    src={craft.image}
+                    alt=""
+                  />
+                </div>
+                <div className="flex justify-between">
+                  <div className="w-3/4 dark:text-[#f0f0f0]">
+                    {/* <h3 className="text-2xl mb-4">Item Name: {craft.image}</h3> */}
+                    <h3 className="text-2xl font-semibold">
+                      Name: {craft.item_name}
+                    </h3>
+                    <div className="text-lg font-medium mt-4">
+                      <p className="">Price: $ {craft.price}</p>
+                      <p>Rating: {craft.rating}</p>
+                      <p>Customization: {craft.customization}</p>
+                      <p>Stock Status: {craft.stockStatus}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-center gap-4 text-white">
+                    <Link
+                      to={`/updateItem/${craft._id}`}
+                      className="bg-[#2c8715ab] text-3xl p-3 rounded-md hover:bg-green-800 transition-all duration-150"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Update"
+                      data-tooltip-place="top"
+                    >
+                      <PiPencilBold />
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(craft._id)}
+                      className="bg-[#e02525e2] text-3xl p-3 rounded-md hover:bg-red-700 transition-all duration-150"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Delete"
+                      data-tooltip-place="top"
+                    >
+                      <RiDeleteBin6Line />
+                    </button>
+                    <Tooltip id="my-tooltip" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

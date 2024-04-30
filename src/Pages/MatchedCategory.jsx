@@ -38,8 +38,8 @@ const MatchedCategory = () => {
           </p>
           {loadedCategory.subcategory_name}
         </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-12">
+        <p className="text-[15px] dark:text-[#d9d9d9] pt-8 pb-4">Results: {crafts.length}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
           {crafts.map((craft) => (
             <div
               key={craft._id}
