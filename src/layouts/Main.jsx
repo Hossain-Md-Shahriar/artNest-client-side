@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const Main = () => {
   return (
-    <div className="font-lora">
+    <div className="font-lora dark:bg-[#101010] transition-all duration-150">
       <Navbar />
       <div className="mt-20"></div>
       <Outlet />

@@ -7,6 +7,8 @@ import HomeCraftItem from "../components/HomeCraftItem";
 import { Helmet } from "react-helmet-async";
 import background from "../assets/background.jpg";
 import Spinner from "../components/Spinner";
+import Customer from "../components/Customer";
+import Faq from "../components/Faq";
 
 const Home = () => {
   // const loadedCrafts = useLoaderData();
@@ -42,7 +44,7 @@ const Home = () => {
       {/* Craft Categories section */}
       <div className="max-w-7xl mx-auto my-24 lg:my-32">
         <div className="mx-4">
-          <Fade cascade direction="down" duration={900} delay={200} triggerOnce>
+          <Fade cascade direction="down" duration={900} delay={300} triggerOnce>
             <h2 className="text-4xl font-bold dark:text-[#f0f0f0] text-center">
               Arts & Crafts Categories
             </h2>
@@ -81,13 +83,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* Home Background */}
-      <div className="size-full -z-40 fixed top-0">
-        <img
-          className="size-full object-cover object-center"
-          src={background}
-          alt=""
-        />
+      {/* Extra section */}
+      <div className="max-w-7xl mx-auto my-24 lg:my-32">
+        <Customer />
+      </div>
+      <div className="max-w-7xl mx-auto my-24 lg:my-32">
+        <Faq />
       </div>
     </div>
   );

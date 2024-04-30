@@ -26,7 +26,7 @@ const HomeCraftItem = () => {
 
   return (
     <div>
-      <Fade cascade direction="down" duration={900} damping={0.1} delay={200} triggerOnce>
+      <Fade cascade direction="down" duration={900} damping={0.1} delay={300} triggerOnce>
         <h2 className="text-4xl font-bold dark:text-[#f0f0f0] text-center">
           Craft Items
         </h2>
