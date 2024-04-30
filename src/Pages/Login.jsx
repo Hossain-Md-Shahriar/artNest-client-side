@@ -52,12 +52,12 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-28">
+    <div className="max-w-6xl mx-auto py-16 dark:text-[#f0f0f0]">
       <div className="mx-4">
-        <h2 className="text-2xl font-medium mb-6 text-center">
+        <h2 className="text-2xl font-semibold mb-6 text-center">
           Login to Your Account
         </h2>
-        <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#3282b857]">
+        <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#4793af54]">
           <form onSubmit={handleLogin}>
             <div className="form-control mb-2">
               <label className="label">
@@ -67,7 +67,7 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
@@ -79,36 +79,36 @@ const Login = () => {
                 type="password"
                 placeholder="password"
                 name="password"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
             <div className="form-control mt-7">
-              <button className="btn btn-neutral bg-[#0F4C75] hover:bg-[#0a3049] text-white">
+              <button className="btn btn-neutral border-none bg-[#4793AF] hover:bg-[#4793afc3] text-white">
                 Login
               </button>
             </div>
           </form>
-          <p className="py-3 text-center text-sm text-[#797979]">
+          <p className="py-3 text-center text-sm text-[#797979] dark:text-[#b3b3b3]">
             Or continue with,
           </p>
           <div className="flex justify-center gap-5">
             <div
               onClick={handleGoogleSignIn}
-              className="cursor-pointer rounded-full border-2 flex justify-center items-center size-10 hover:shadow-lg transition-all duration-150"
+              className="cursor-pointer dark:bg-white rounded-full border-2 dark:border-[#565656] flex justify-center items-center size-10 hover:shadow-lg transition-all duration-150"
             >
               <img className="w-7" src={google} alt="" />
             </div>
             <div
               onClick={handleGithubSignIn}
-              className="cursor-pointer rounded-full border-2 flex justify-center items-center size-10 hover:shadow-lg transition-all duration-150"
+              className="cursor-pointer dark:bg-white rounded-full border-2 dark:border-[#565656] flex justify-center items-center size-10 hover:shadow-lg transition-all duration-150"
             >
               <img className="w-7" src={github} alt="" />
             </div>
           </div>
-          <p className="text-center pt-3 border-t mt-5">
+          <p className="text-center pt-3 border-t dark:border-[#565656] mt-5">
             Don't have an account?{" "}
-            <Link to="/register" className="text-[#3282B8] font-semibold">
+            <Link to="/register" className="text-[#4793AF] font-semibold">
               Register
             </Link>
           </p>

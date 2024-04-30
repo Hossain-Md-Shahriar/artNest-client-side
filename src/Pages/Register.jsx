@@ -50,12 +50,12 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-28">
+    <div className="max-w-6xl mx-auto py-14 dark:text-[#f0f0f0]">
       <div className="mx-4">
         <h2 className="text-2xl font-medium mb-8 text-center">
           Register Your Account
         </h2>
-        <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#3282b857]">
+        <div className="md:w-1/2 lg:w-1/3 mx-auto shadow-lg px-5 py-8 rounded-xl border-2 border-[#4793af54]">
           <form onSubmit={handleRegister}>
             <div className="form-control mb-2">
               <label className="label">
@@ -65,7 +65,7 @@ const Register = () => {
                 type="text"
                 placeholder="name"
                 name="name"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
@@ -77,7 +77,7 @@ const Register = () => {
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
@@ -89,7 +89,7 @@ const Register = () => {
                 type="url"
                 placeholder="photo url"
                 name="photo"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
@@ -101,12 +101,12 @@ const Register = () => {
                 type="password"
                 placeholder="password"
                 name="password"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-[#49494986]"
                 required
               />
             </div>
             <div className="form-control mt-7">
-              <button className="btn btn-neutral bg-[#0F4C75] hover:bg-[#0a3049] text-white">
+              <button className="btn btn-neutral border-none bg-[#4793AF] hover:bg-[#4793afc3] text-white">
                 Register
               </button>
             </div>
