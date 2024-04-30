@@ -1,5 +1,6 @@
 # Website Name: ArtNest
 # Live Site Link: https://art-and-craft-store-9ac74.web.app/
+# Selected Category: Painting and Drawing
 ## Website Features:
 - This website has an attractive design with some animation.
 - Firebase Authentication is integrated with this website allowing user to register and login using email, Google, and GitHub.
