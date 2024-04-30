@@ -51,6 +51,7 @@ const Register = () => {
   };
 
   return (
+    <div className="dark:bg-[#101010] transition-all duration-150 pb-20">
     <div className="max-w-6xl mx-auto py-14 dark:text-[#f0f0f0]">
       <Helmet>
         <title>ArtNest | Register</title>
@@ -136,6 +137,7 @@ const Register = () => {
           transition={Slide}
         />
       </div>
+    </div>
     </div>
   );
 };

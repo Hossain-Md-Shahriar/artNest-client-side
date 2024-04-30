@@ -88,7 +88,8 @@ const MyList = () => {
   };
 
   return (
-    <div className="bg-[#ffc3700a] dark:bg-[#ffc37005]">
+    <div className="dark:bg-[#101010] transition-all duration-150">
+    <div className="bg-[#ffc3700a] dark:bg-[#ffc37005] pb-16">
       <Helmet>
         <title>ArtNest | My List</title>
       </Helmet>
@@ -173,6 +174,7 @@ const MyList = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

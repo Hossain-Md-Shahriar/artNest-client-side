@@ -5,6 +5,8 @@ import { Fade } from "react-awesome-reveal";
 import Banner from "../components/Banner";
 import HomeCraftItem from "../components/HomeCraftItem";
 import { Helmet } from "react-helmet-async";
+import background from "../assets/background.jpg";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   // const loadedCrafts = useLoaderData();
@@ -21,15 +23,11 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    );
+    return <Spinner />;
   }
 
   return (
-    <div className="">
+    <div className="bg-white dark:bg-[#101010] transition-all duration-150">
       <Helmet>
         <title>ArtNest | Home</title>
       </Helmet>
@@ -73,12 +71,23 @@ const Home = () => {
                   <p className="font-medium text-[#DD5746] text-center">
                     {c.origins}
                   </p>
-                  <p className="font-medium dark:text-[#f0f0f0] text-center px-3"> {c.key_elements}</p>
+                  <p className="font-medium dark:text-[#f0f0f0] text-center px-3">
+                    {" "}
+                    {c.key_elements}
+                  </p>
                 </div>
               </Link>
             ))}
           </div>
         </div>
+      </div>
+      {/* Home Background */}
+      <div className="size-full -z-40 fixed top-0">
+        <img
+          className="size-full object-cover object-center"
+          src={background}
+          alt=""
+        />
       </div>
     </div>
   );

@@ -87,7 +87,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-white dark:bg-[#1b1b1b] drop-shadow-lg fixed top-0 z-50 px-3 md:px-8 py-4">
+    <div className="navbar bg-white dark:bg-[#1b1b1b] drop-shadow-lg fixed top-0 z-50 px-3 md:px-8 py-4 transition-all duration-150">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -105,7 +105,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="flex gap-4">{navlinks}</ul>
+        <ul className="flex gap-6">{navlinks}</ul>
       </div>
       <div className="navbar-end space-x-2">
         {user ? (
