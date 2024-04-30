@@ -6,6 +6,7 @@ import { baseURL } from "../utility/base_url";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { PiPencilBold } from "react-icons/pi";
 import { Tooltip } from "react-tooltip";
+import { Helmet } from "react-helmet-async";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -88,6 +89,9 @@ const MyList = () => {
 
   return (
     <div className="bg-[#ffc3700a] dark:bg-[#ffc37005]">
+      <Helmet>
+        <title>ArtNest | My List</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto py-28">
         <div className="mx-4">
           <div className="flex justify-between items-end gap-4 flex-wrap mb-8">
@@ -95,15 +99,23 @@ const MyList = () => {
               My Arts & Crafts List
             </h1>
             <div>
-              <label className="dark:text-[#f0f0f0] mr-2">Filter by Customization: </label>
+              <label className="dark:text-[#f0f0f0] mr-2">
+                Filter by Customization:{" "}
+              </label>
               <select
                 value={selectedValue}
                 onChange={handleFilter}
                 className="p-2 border-2 rounded-md bg-transparent dark:text-[#f0f0f0] dark:border-[#565656]"
               >
-                <option className="text-black" value="all">All</option>
-                <option className="text-black" value="yes">Yes</option>
-                <option className="text-black" value="no">No</option>
+                <option className="text-black" value="all">
+                  All
+                </option>
+                <option className="text-black" value="yes">
+                  Yes
+                </option>
+                <option className="text-black" value="no">
+                  No
+                </option>
               </select>
             </div>
           </div>

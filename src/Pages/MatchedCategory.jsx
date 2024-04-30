@@ -4,6 +4,7 @@ import { baseURL } from "../utility/base_url";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import { LiaTruckLoadingSolid } from "react-icons/lia";
+import { Helmet } from "react-helmet-async";
 
 const MatchedCategory = () => {
   const loadedCategory = useLoaderData();
@@ -31,6 +32,9 @@ const MatchedCategory = () => {
 
   return (
     <div className="max-w-7xl min-h-screen mx-auto py-16">
+      <Helmet>
+        <title>ArtNest | Category</title>
+      </Helmet>
       <div className="mx-4">
         <h1 className="text-2xl font-medium border-l-4 border-[#4793AF] p-2 dark:text-[#f0f0f0]">
           <p className="text-base text-[#767676] dark:text-[#a6a6a6] mb-1">
@@ -38,7 +42,9 @@ const MatchedCategory = () => {
           </p>
           {loadedCategory.subcategory_name}
         </h1>
-        <p className="text-[15px] dark:text-[#d9d9d9] pt-8 pb-4">Results: {crafts.length}</p>
+        <p className="text-[15px] dark:text-[#d9d9d9] pt-8 pb-4">
+          Results: {crafts.length}
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
           {crafts.map((craft) => (
             <div

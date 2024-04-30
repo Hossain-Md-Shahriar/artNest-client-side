@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
+import { Helmet } from "react-helmet-async";
 
 const AllItems = () => {
   // const crafts = useLoaderData();
@@ -26,6 +27,9 @@ const AllItems = () => {
 
   return (
     <div className="max-w-6xl mx-auto py-20">
+      <Helmet>
+        <title>ArtNest | All Items</title>
+      </Helmet>
       <div className="mx-4">
         <h1 className="text-4xl font-medium border-l-4 border-[#4793AF] mb-14 p-4 dark:text-[#f0f0f0]">
           All Arts & Crafts Items

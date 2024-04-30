@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { baseURL } from "../utility/base_url";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 const ItemDetails = () => {
   // const craft = useLoaderData();
@@ -43,6 +44,9 @@ const ItemDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16">
+      <Helmet>
+        <title>ArtNest | Details</title>
+      </Helmet>
       <div className="mx-4">
         <h1 className="text-4xl font-medium border-l-4 border-[#4793AF] p-4 dark:text-[#f0f0f0]">
           {item_name}

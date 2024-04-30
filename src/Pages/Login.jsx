@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { logInUser, signInWithGoogle, signInWithGithub } =
@@ -53,6 +54,9 @@ const Login = () => {
 
   return (
     <div className="max-w-6xl mx-auto py-16 dark:text-[#f0f0f0]">
+      <Helmet>
+        <title>ArtNest | Login</title>
+      </Helmet>
       <div className="mx-4">
         <h2 className="text-2xl font-semibold mb-6 text-center">
           Login to Your Account

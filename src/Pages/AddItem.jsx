@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { baseURL } from "../utility/base_url";
+import { Helmet } from "react-helmet-async";
 
 const AddItem = () => {
   const { user } = useContext(AuthContext);
@@ -62,6 +63,9 @@ const AddItem = () => {
 
   return (
     <div className="bg-[#ffc3700a] dark:bg-[#ffc37005]">
+      <Helmet>
+        <title>ArtNest | Add Item</title>
+      </Helmet>
       <div className="max-w-6xl mx-auto py-16">
         <div className="mx-4">
           <h1 className="text-4xl font-medium border-l-4 border-[#4793AF] mb-8 p-4 dark:text-[#f0f0f0]">

@@ -37,12 +37,12 @@ const Banner = () => {
                   delay={200}
                 >
                   <h2 className="text-white text-4xl font-bold drop-shadow-lg">
-                    Paintings That Calm Your Soul
+                    Colorful Horizons
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
                   <p className="text-white mt-5 drop-shadow-lg">
-                    Experience ultimate relaxation and indulgence in this luxury
-                    resort retreat surrounded by pristine landscapes.
+                    Vibrant landscapes bring nature's beauty to life with a
+                    diverse palette of colors.
                   </p>
                 </Fade>
                 <button className="text-white text-lg font-semibold mt-6 py-3 px-5 bg-[#dd5846d0] rounded-md hover:bg-[#b34739] transition-all duration-150">
@@ -64,12 +64,12 @@ const Banner = () => {
                   delay={200}
                 >
                   <h2 className="text-white text-4xl font-bold drop-shadow-lg">
-                    Paintings That Calm Your
+                    Tranquil Beach Sunsets
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
                   <p className="text-white mt-5 drop-shadow-lg">
-                    Experience ultimate relaxation and indulgence in this luxury
-                    resort retreat surrounded by pristine landscapes.
+                    Discover serene beachscapes, capturing breathtaking sunsets
+                    that paint the sky with warm hues.
                   </p>
                 </Fade>
                 <button className="text-white text-lg font-semibold mt-6 py-3 px-5 bg-[#dd5846d0] rounded-md hover:bg-[#b34739] transition-all duration-150">
@@ -91,12 +91,12 @@ const Banner = () => {
                   delay={200}
                 >
                   <h2 className="text-white text-4xl font-bold drop-shadow-lg">
-                    Paintings That Calm Your Soul
+                    Capturing Life's Moments
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
                   <p className="text-white mt-5 drop-shadow-lg">
-                    Experience ultimate relaxation and indulgence in this luxury
-                    resort retreat surrounded by pristine landscapes.
+                    Elegant portrayals of daily life, showcasing intimate
+                    moments and lively scenes with detail.
                   </p>
                 </Fade>
                 <button className="text-white text-lg font-semibold mt-6 py-3 px-5 bg-[#dd5846d0] rounded-md hover:bg-[#b34739] transition-all duration-150">

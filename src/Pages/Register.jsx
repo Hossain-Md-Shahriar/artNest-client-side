@@ -4,6 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -51,6 +52,9 @@ const Register = () => {
 
   return (
     <div className="max-w-6xl mx-auto py-14 dark:text-[#f0f0f0]">
+      <Helmet>
+        <title>ArtNest | Register</title>
+      </Helmet>
       <div className="mx-4">
         <h2 className="text-2xl font-medium mb-8 text-center">
           Register Your Account

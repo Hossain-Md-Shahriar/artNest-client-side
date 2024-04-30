@@ -4,6 +4,7 @@ import { baseURL } from "../utility/base_url";
 import { Fade } from "react-awesome-reveal";
 import Banner from "../components/Banner";
 import HomeCraftItem from "../components/HomeCraftItem";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   // const loadedCrafts = useLoaderData();
@@ -29,6 +30,9 @@ const Home = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>ArtNest | Home</title>
+      </Helmet>
       <Banner />
       {/* Craft Items section */}
       <div className="max-w-6xl mx-auto my-24 lg:my-32">

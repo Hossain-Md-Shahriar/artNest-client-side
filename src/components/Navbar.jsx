@@ -48,7 +48,7 @@ const Navbar = () => {
             } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
           }
         >
-          All Items
+          All Arts & Crafts Items
         </NavLink>
       </li>
       {user && (
@@ -78,7 +78,7 @@ const Navbar = () => {
                 } hover:text-[#4793AF] dark:hover:text-[#4793AF] border-[#4793AF] hover:border-b-2 font-medium transition-all duration-75`
               }
             >
-              My Arts & Craft List
+              My Arts & Crafts List
             </NavLink>
           </li>
         </>
@@ -100,8 +100,8 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <Link to="/" className="text-xl font-bold dark:text-white">
-          daisyUI
+        <Link to="/" className="text-2xl font-bold dark:text-white">
+          ArtNest
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
