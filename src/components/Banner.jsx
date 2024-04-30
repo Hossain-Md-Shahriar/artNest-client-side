@@ -40,7 +40,7 @@ const Banner = () => {
                     Paintings That Calm Your Soul
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
-                  <p className="text-white mt-5 drop-shadow-lg hidden md:block">
+                  <p className="text-white mt-5 drop-shadow-lg">
                     Experience ultimate relaxation and indulgence in this luxury
                     resort retreat surrounded by pristine landscapes.
                   </p>
@@ -67,7 +67,7 @@ const Banner = () => {
                     Paintings That Calm Your
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
-                  <p className="text-white mt-5 drop-shadow-lg hidden md:block">
+                  <p className="text-white mt-5 drop-shadow-lg">
                     Experience ultimate relaxation and indulgence in this luxury
                     resort retreat surrounded by pristine landscapes.
                   </p>
@@ -94,7 +94,7 @@ const Banner = () => {
                     Paintings That Calm Your Soul
                   </h2>
                   <div className=" mt-4 border max-w-[220px] border-[#4793AF]"></div>
-                  <p className="text-white mt-5 drop-shadow-lg hidden md:block">
+                  <p className="text-white mt-5 drop-shadow-lg">
                     Experience ultimate relaxation and indulgence in this luxury
                     resort retreat surrounded by pristine landscapes.
                   </p>
