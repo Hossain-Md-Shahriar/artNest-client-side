@@ -53,33 +53,35 @@ const Home = () => {
             <div className="bg-[#4793AF] w-[1px] h-24"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-            {craftCategories.map((c) => (
-              <Link
-                to={`/matchedCategory/${c._id}`}
-                key={c._id}
-                className="group hover:drop-shadow-2xl transition-all duration-[270ms] p-5 cursor-pointer"
-              >
-                <div className="bg-[#717171] w-full h-60 rounded-sm overflow-hidden">
-                  <img
-                    className="size-full object-cover object-center group-hover:scale-105 transition-all duration-500"
-                    src={c.image}
-                    alt=""
-                  />
-                </div>
-                <h3 className="text-2xl font-semibold mt-2 mb-3 dark:text-[#f0f0f0] text-center">
-                  {c.subcategory_name}
-                </h3>
-                <div className="flex flex-col items-center gap-1">
-                  <p className="font-medium text-[#DD5746] text-center">
-                    {c.origins}
-                  </p>
-                  <p className="font-medium dark:text-[#f0f0f0] text-center px-3">
-                    {" "}
-                    {c.key_elements}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            <Fade>
+              {craftCategories.map((c) => (
+                <Link
+                  to={`/matchedCategory/${c._id}`}
+                  key={c._id}
+                  className="group hover:drop-shadow-2xl transition-all duration-[270ms] p-5 cursor-pointer"
+                >
+                  <div className="bg-[#717171] w-full h-60 rounded-sm overflow-hidden">
+                    <img
+                      className="size-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+                      src={c.image}
+                      alt=""
+                    />
+                  </div>
+                  <h3 className="text-2xl font-semibold mt-2 mb-3 dark:text-[#f0f0f0] text-center">
+                    {c.subcategory_name}
+                  </h3>
+                  <div className="flex flex-col items-center gap-1">
+                    <p className="font-medium text-[#DD5746] text-center">
+                      {c.origins}
+                    </p>
+                    <p className="font-medium dark:text-[#f0f0f0] text-center px-3">
+                      {" "}
+                      {c.key_elements}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </Fade>
           </div>
         </div>
       </div>

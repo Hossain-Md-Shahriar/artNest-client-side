@@ -36,7 +36,7 @@ const HomeCraftItem = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
-        <Fade duration={1200} delay={300} triggerOnce>
+        <Fade duration={1000} delay={200} triggerOnce>
           {loadedCrafts.slice(0, 6).map((craft) => (
             <div
               key={craft._id}
